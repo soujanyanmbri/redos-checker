@@ -3,6 +3,7 @@
 # All node modules
 node_modules/
 gradle/
+.gradle
 
 # All build directories
 build/
