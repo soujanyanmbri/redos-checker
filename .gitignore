@@ -1,0 +1,19 @@
+.devcontainer/
+.vscode/
+# All node modules
+node_modules/
+gradle/
+
+# All build directories
+build/
+dist/
+target/
+
+# All logs
+logs/
+# All coverage reports
+coverage/
+
+.html
+.pdf
+

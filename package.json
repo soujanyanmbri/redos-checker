@@ -1,0 +1,17 @@
+{
+  "name": "redos-checker",
+  "version": "1.0.0",
+  "description": "1. This Github Action crawls through the following files, gets the regexes and passes them through the redos checker.  2. Note: This runs only newly added regexes.      - .conf (modsec-crs-conf between '@rx and '\\ )     - .java     - .py     - OPTIONAL : Add .dat files as well. (Cant work with the new crs-toolchain, hence modsec-crs-rules.conf)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "acorn": "^8.14.0",
+    "puppeteer": "^24.1.1",
+    "recheck": "^4.4.5"
+  }
+}

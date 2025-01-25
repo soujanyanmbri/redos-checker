@@ -1,0 +1,59 @@
+plugins {
+    id 'java'
+    id 'application'  
+}
+
+group = 'com.regexExtractor'  
+version = '1.0-SNAPSHOT'
+
+sourceCompatibility = '11'  
+
+repositories {
+    mavenCentral()  
+}
+
+dependencies {
+    implementation 'com.google.code.gson:gson:2.8.6'  
+    implementation 'com.github.javaparser:javaparser-core:3.22.0'  
+}
+
+application {
+    mainClassName = 'regexExtractor.GenericRegexExtractor'
+}
+
+task buildJava {
+    dependsOn 'build'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+
+jar {
+    manifest {
+        attributes(
+            'Main-Class': 'regexExtractor.GenericRegexExtractor'  
+        )
+    }
+}
+
+task runJava(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'regexExtractor.GenericRegexExtractor'  
+}
+
+task fatJar(type: Jar) {
+    archiveClassifier = 'all'
+    from sourceSets.main.output
+    dependsOn configurations.runtimeClasspath
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+
+    manifest {
+        attributes(
+            'Main-Class': 'regexExtractor.GenericRegexExtractor'
+        )
+    }
+}
